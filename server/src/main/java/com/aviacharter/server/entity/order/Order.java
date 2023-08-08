@@ -19,8 +19,8 @@ public class Order extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private OrderTypes orderType;
 
-    @Column(name = "country", nullable = false)
-    private String country;
+//    @Column(name = "country", nullable = false)
+//    private String country;
 
     @Column(name = "comment")
     private String comment;
