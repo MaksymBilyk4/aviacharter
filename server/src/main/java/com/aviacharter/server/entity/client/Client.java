@@ -22,7 +22,7 @@ public class Client extends BaseEntity {
     private String clientName;
 
     @Column(name = "telephone_number", nullable = false)
-    private String telephone_number;
+    private String telephoneNumber;
 
     @Column(name = "email")
     private String email;
@@ -37,4 +37,15 @@ public class Client extends BaseEntity {
     @JoinColumn(name = "passport_number", referencedColumnName = "passport_number")
     private Passport passport;
 
+    @Override
+    public String toString() {
+        return "Client{" +
+                "clientName='" + clientName + '\'' +
+                ", telephone_number='" + telephoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", birthday=" + birthday +
+                ", additionalInfo='" + additionalInfo + '\'' +
+                ", passport=" + passport.getPassportNumber() +
+                '}';
+    }
 }

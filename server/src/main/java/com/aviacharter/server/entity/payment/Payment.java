@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Payment extends BaseEntity {
 
     @Column(name = "card_number", nullable = false)
-    private long cardNumber;
+    private String cardNumber;
 
     @Column(name = "card_owner", nullable = false)
     private String cardOwner;

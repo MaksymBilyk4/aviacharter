@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -38,8 +39,8 @@ public class PaymentService implements BaseService<Payment> {
     }
 
     @Override
-    public Payment update(Payment obj) {
-        Payment payment = findById(obj.getId());
+    public Payment update(Payment obj, Long id) {
+        Payment payment = findById(id);
 
         payment.setCVV(obj.getCVV());
         payment.setBank(obj.getBank());
@@ -61,4 +62,19 @@ public class PaymentService implements BaseService<Payment> {
     public void deleteById(Long id) {
         paymentRepository.deleteById(id);
     }
+
+    public List<Payment> findAllByCardNumber (String cardNumber) {
+        List<Payment> payments = paymentRepository.findAll();
+        return payments.stream()
+                .filter(p -> p.getCardNumber().contains(cardNumber))
+                .collect(Collectors.toList());
+    }
+
+    public List<Payment> findAllByCardOwner (String owner) {
+        List<Payment> payments = paymentRepository.findAll();
+        return payments.stream()
+                .filter(p -> p.getCardOwner().contains(owner))
+                .collect(Collectors.toList());
+    }
+
 }
