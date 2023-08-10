@@ -35,7 +35,7 @@ export const routes = [
     },
     {
         element: <ClientsAdmin/>,
-        path: PATH.CLIENTS.CLIENTS_ADMIN
+        path: PATH.CLIENTS.ADMIN
     },
     {
         element: <Payments/>,

@@ -1,16 +1,17 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 import {routes} from "./routes/routes";
+import MainLayout from "./components/Layout/MainLayout";
 
 const App = () => {
     return (
-        <div>
+        <MainLayout>
             <Routes>
-                {routes.map(r => {
+                {routes.map(r =>
                     <Route key={r.path} path={r.path} element={r.element}/>
-                })}
+                )}
             </Routes>
-        </div>
+        </MainLayout>
     );
 };
 
