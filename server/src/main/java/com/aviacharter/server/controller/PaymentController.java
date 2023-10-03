@@ -2,6 +2,7 @@ package com.aviacharter.server.controller;
 
 import com.aviacharter.server.dto.payment.PaymentRequestDto;
 import com.aviacharter.server.dto.payment.PaymentResponseDto;
+import com.aviacharter.server.dto.payment.UpdateBalanceRequestDto;
 import com.aviacharter.server.entity.payment.Payment;
 import com.aviacharter.server.facade.payment.PaymentRequestMapper;
 import com.aviacharter.server.facade.payment.PaymentResponseMapper;
@@ -79,6 +80,13 @@ public class PaymentController {
     ) {
         Payment payment = requestMapper.convertToEntity(dto);
         return responseMapper.convertToDto(paymentService.update(payment, id));
+    }
+
+    @PutMapping("/updateBalance")
+    public PaymentResponseDto updateBalance(
+            @RequestBody UpdateBalanceRequestDto dto
+    ) {
+        return responseMapper.convertToDto(paymentService.updateBalance(dto.getBalance(), dto.getId()));
     }
 
     @DeleteMapping("/{id}")

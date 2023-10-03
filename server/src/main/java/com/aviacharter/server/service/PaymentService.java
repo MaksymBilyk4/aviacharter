@@ -70,6 +70,12 @@ public class PaymentService implements BaseService<Payment> {
                 .collect(Collectors.toList());
     }
 
+    public Payment updateBalance(long balance, Long id) {
+        Payment payment = findById(id);
+        payment.setBalance(balance);
+        return paymentRepository.save(payment);
+    }
+
     public List<Payment> findAllByCardOwner (String owner) {
         List<Payment> payments = paymentRepository.findAll();
         return payments.stream()

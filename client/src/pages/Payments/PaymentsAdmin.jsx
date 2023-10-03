@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Button, Form, Input, InputNumber, Select} from "antd";
 import {banks} from "./BanksConstants";
+import {useDispatch} from "react-redux";
+import {createPayment} from "../../redux/action/payment";
 
 const PaymentsAdmin = () => {
     const [cardNumber, setNumber] = useState("");
@@ -19,14 +21,24 @@ const PaymentsAdmin = () => {
     const onBalanceChange = (e) => setBalance(e);
     const onInfoChange = (e) => setInfo(e.target.value);
 
-    // TODO
-    const onSubmit = () => {
+    const dispatch = useDispatch();
 
+    // TODO
+    const onFinish = async () => {
+        dispatch(createPayment({
+            cardNumber,
+            cardOwner,
+            bankName: bank,
+            expiredDate,
+            balance,
+            cardInfo,
+            cvv,
+        }));
     }
 
     return (
         <>
-            <Form>
+            <Form onFinish={onFinish}>
                 <Form.Item
                     label={"Номер картки"}
                     rules={[{
