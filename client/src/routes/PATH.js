@@ -13,6 +13,7 @@ export const PATH = {
         ADMIN: "/clients/create"
     },
     PAYMENTS: {
-        ROOT: "/payments"
+        ROOT: "/payments",
+        ADMIN: "/payments/create"
     },
 }

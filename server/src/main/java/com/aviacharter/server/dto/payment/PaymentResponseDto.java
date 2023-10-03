@@ -12,7 +12,7 @@ import lombok.Setter;
 public class PaymentResponseDto {
 
     private Long id;
-    private long cardNumber;
+    private String cardNumber;
     private String cardOwner;
     private String bankName;
     private String expiredDate;

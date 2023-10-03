@@ -10,4 +10,11 @@ public class PaymentResponseMapper extends GeneralFacade<Payment, PaymentRespons
     public PaymentResponseMapper() {
         super(Payment.class, PaymentResponseDto.class);
     }
+
+    @Override
+    protected void decorateDto(PaymentResponseDto dto, Payment entity) {
+        dto.setBankName(String.valueOf(entity.getBank()));
+
+        super.decorateDto(dto, entity);
+    }
 }

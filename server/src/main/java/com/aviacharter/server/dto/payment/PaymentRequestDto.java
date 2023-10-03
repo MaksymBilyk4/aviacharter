@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PaymentRequestDto {
 
-    private long cardNumber;
+    private String cardNumber;
     private String cardOwner;
     private String bankName;
     private String expiredDate;

@@ -67,6 +67,7 @@ public class PaymentController {
     public PaymentResponseDto create(
             @RequestBody PaymentRequestDto dto
     ) {
+        System.out.println(dto.getBankName());
         Payment payment = requestMapper.convertToEntity(dto);
         return responseMapper.convertToDto(paymentService.create(payment));
     }

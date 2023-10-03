@@ -1,0 +1,10 @@
+export const banks = {
+    PRIVAT_BANK: "PrivatBank",
+    MONOBANK: "Monobank",
+    PUMB: "PUMB",
+    UKRSIBBANK: "UKRSIBBANK",
+    REVOLUT: "REVOLUT",
+    UKRGASBANK: "UKRGASBANK",
+    RAIFFEISEN: "RAIFFEISEN",
+    OSHCHADBANK: "OSHCHADBANK"
+}
