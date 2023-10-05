@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Button, Form, Input, InputNumber, Select} from "antd";
+import React, {useRef, useState} from 'react';
+import {Button, Form, Input, InputNumber, Select, message} from "antd";
 import {banks} from "./BanksConstants";
 import {useDispatch} from "react-redux";
 import {createPayment} from "../../redux/action/payment";
@@ -12,6 +12,7 @@ const PaymentsAdmin = () => {
     const [bank, setBank] = useState(Object.values(banks)[0]);
     const [balance, setBalance] = useState(0);
     const [cardInfo, setInfo] = useState("");
+    const form = useRef();
 
     const onNumberChange = (e) => setNumber(e.target.value);
     const onDateChange = (e) => setDate(e.target.value);
@@ -20,6 +21,8 @@ const PaymentsAdmin = () => {
     const onOwnerChange = (e) => setOwner(e.target.value);
     const onBalanceChange = (e) => setBalance(e);
     const onInfoChange = (e) => setInfo(e.target.value);
+
+    const [messageApi, contextHolder] = message.useMessage();
 
     const dispatch = useDispatch();
 
@@ -34,11 +37,19 @@ const PaymentsAdmin = () => {
             cardInfo,
             cvv,
         }));
+
+        messageApi.open({
+            type: "success",
+            content: "Спосіб оплати / Картку - успішно створено"
+        });
+
+        form.current.resetFields();
     }
 
     return (
         <>
-            <Form onFinish={onFinish}>
+            {contextHolder}
+            <Form ref={form} onFinish={onFinish}>
                 <Form.Item
                     label={"Номер картки"}
                     rules={[{
@@ -47,50 +58,51 @@ const PaymentsAdmin = () => {
                     }]}
                     name={"card_number"}
                 >
-                    <Input
-                        bordered
-                        onChange={onNumberChange}
-                        value={cardNumber}
-                        size={"large"}
-                        placeholder={"0000 0000 0000 0000"}
-                    />
+{/*//TODO*/}
+                    {/*<Input*/}
+                    {/*    bordered*/}
+                    {/*    onChange={onNumberChange}*/}
+                    {/*    value={cardNumber}*/}
+                    {/*    size={"large"}*/}
+                    {/*    placeholder={"0000 0000 0000 0000"}*/}
+                    {/*/>*/}
                 </Form.Item>
 
-                <div style={{display: "grid", gridTemplateColumns: "repeat(2, 50%)"}}>
-                    <Form.Item
-                        label={"Date Expired"}
-                        rules={[{
-                            required: true,
-                            message: "Введіть час спливу роботи картки!"
-                        }]}
-                        name={"expired_date"}
-                    >
-                        <Input
-                            bordered
-                            onChange={onDateChange}
-                            value={expiredDate}
-                            placeholder={"00/0000"}
-                            style={{maxWidth: "30%"}}
-                        />
-                    </Form.Item>
+                {/*<div style={{display: "grid", gridTemplateColumns: "repeat(2, 50%)"}}>*/}
+                {/*    <Form.Item*/}
+                {/*        label={"Date Expired"}*/}
+                {/*        rules={[{*/}
+                {/*            required: true,*/}
+                {/*            message: "Введіть час спливу роботи картки!"*/}
+                {/*        }]}*/}
+                {/*        name={"expired_date"}*/}
+                {/*    >*/}
+                {/*        <Input*/}
+                {/*            bordered*/}
+                {/*            onChange={onDateChange}*/}
+                {/*            value={expiredDate}*/}
+                {/*            placeholder={"00/0000"}*/}
+                {/*            style={{maxWidth: "30%"}}*/}
+                {/*        />*/}
+                {/*    </Form.Item>*/}
 
-                    <Form.Item
-                        label={"CVV"}
-                        rules={[{
-                            required: true,
-                            message: "Введіть cvv код!"
-                        }]}
-                        name={"cvv"}
-                    >
-                        <Input
-                            bordered
-                            onChange={onCVVChange}
-                            value={cvv}
-                            placeholder={"***"}
-                            style={{maxWidth: "30%"}}
-                        />
-                    </Form.Item>
-                </div>
+                {/*    <Form.Item*/}
+                {/*        label={"CVV"}*/}
+                {/*        rules={[{*/}
+                {/*            required: true,*/}
+                {/*            message: "Введіть cvv код!"*/}
+                {/*        }]}*/}
+                {/*        name={"cvv"}*/}
+                {/*    >*/}
+                {/*        <Input*/}
+                {/*            bordered*/}
+                {/*            onChange={onCVVChange}*/}
+                {/*            value={cvv}*/}
+                {/*            placeholder={"***"}*/}
+                {/*            style={{maxWidth: "30%"}}*/}
+                {/*        />*/}
+                {/*    </Form.Item>*/}
+                {/*</div>*/}
 
                 <Form.Item
                     label={"Оберіть банк"}

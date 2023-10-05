@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @RestController
 @AllArgsConstructor
 @RequestMapping("${api.version}/payments")
+@CrossOrigin("*")
 public class PaymentController {
 
     private final PaymentService paymentService;
