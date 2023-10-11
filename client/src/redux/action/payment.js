@@ -1,9 +1,9 @@
-import {create, deleteById, findAll, update, updateBalance} from "../../api/payment_api";
+import {create, deleteById, findAll, update} from "../../api/payment_api";
 
 export const FIND_ALL_PAYMENTS = "FIND_ALL_PAYMENTS";
 export const CREATE_PAYMENT = "CREATE_PAYMENT";
 export const UPDATE_PAYMENT = "UPDATE_PAYMENT";
-export const UPDATE_BALANCE = "UPDATE_BALANCE";
+// export const UPDATE_BALANCE = "UPDATE_BALANCE";
 export const DELETE_PAYMENT = "DELETE_PAYMENT";
 
 export const findAllPayments = () => async (dispatch) => {
@@ -27,13 +27,14 @@ export const updatePayment = (data, id) => async (dispatch) => {
         })
 }
 
-export const updateCardBalance = (data) => async (dispatch) => {
-    await updateBalance(data)
-        .then(res => {
-            dispatch({type: UPDATE_BALANCE, payload: res?.data})
-        })
-}
+
+// export const updateCardBalance = (data, index) => async (dispatch) => {
+//     await updateBalance(data)
+//         .then(res => {
+//             dispatch({type: UPDATE_BALANCE, payload: {data: res?.data, index: index}})
+//         })
+// }
 
 export const deletePaymentById = (id) => async (dispatch) => {
-    await deleteById(id).then(res => dispatch({type: DELETE_PAYMENT, payload: id}))
+    await deleteById(id).then(res => dispatch({type: DELETE_PAYMENT, payload: {id:id}}))
 }

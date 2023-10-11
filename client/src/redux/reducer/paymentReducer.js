@@ -1,21 +1,19 @@
-import {FIND_ALL_PAYMENTS, CREATE_PAYMENT, UPDATE_PAYMENT, UPDATE_BALANCE, DELETE_PAYMENT} from "../action/payment";
+import {FIND_ALL_PAYMENTS, CREATE_PAYMENT, UPDATE_PAYMENT, DELETE_PAYMENT} from "../action/payment";
 
 const initialObj = {
-    paymentInfo: []
+    paymentInfo: [],
 }
 
 export const paymentReducer = (state = initialObj, action) => {
     switch (action.type) {
         case FIND_ALL_PAYMENTS:
-            return {...state, paymentInfo: action.payload}
+            return {paymentInfo: action.payload}
         case CREATE_PAYMENT:
-            return {...state, paymentInfo: [...state.paymentInfo, action.payload]}
+            return {paymentInfo: [...state.paymentInfo, action.payload]}
         case UPDATE_PAYMENT:
             return {...state, paymentInfo: [...state.paymentInfo?.filter(item => item.id !== action.payload.id), action.payload] }
-        case UPDATE_BALANCE:
-            return {...state, paymentInfo: [...state.paymentInfo?.filter(item => item.id !== action.payload.id), action.payload] }
         case DELETE_PAYMENT:
-            return {...state, paymentInfo: [...state.paymentInfo?.filter(item => item.id !== action.payload)]}
+            return {paymentInfo: [...state.paymentInfo?.filter(item => item.id !== action.payload.id)]}
         default:
             return state;
     }

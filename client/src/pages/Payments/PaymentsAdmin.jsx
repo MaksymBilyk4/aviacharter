@@ -1,10 +1,23 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Button, Form, Input, InputNumber, Select, message} from "antd";
 import {banks} from "./BanksConstants";
 import {useDispatch} from "react-redux";
-import {createPayment} from "../../redux/action/payment";
+import {createPayment, updatePayment} from "../../redux/action/payment";
+import {PaymentInputsWrapper, usePaymentInputs} from "react-payment-inputs";
+import images from "react-payment-inputs/images";
+
+const {TextArea} = Input;
 
 const PaymentsAdmin = () => {
+
+    const {
+        wrapperProps,
+        getCardImageProps,
+        getCardNumberProps,
+        getExpiryDateProps,
+        getCVCProps
+    } = usePaymentInputs();
+
     const [cardNumber, setNumber] = useState("");
     const [cardOwner, setOwner] = useState("");
     const [expiredDate, setDate] = useState("");
@@ -26,7 +39,7 @@ const PaymentsAdmin = () => {
 
     const dispatch = useDispatch();
 
-    // TODO
+
     const onFinish = async () => {
         dispatch(createPayment({
             cardNumber,
@@ -36,7 +49,7 @@ const PaymentsAdmin = () => {
             balance,
             cardInfo,
             cvv,
-        }));
+        }))
 
         messageApi.open({
             type: "success",
@@ -46,63 +59,35 @@ const PaymentsAdmin = () => {
         form.current.resetFields();
     }
 
+
     return (
         <>
             {contextHolder}
-            <Form ref={form} onFinish={onFinish}>
+            <Form
+                ref={form}
+                onFinish={onFinish}
+            >
                 <Form.Item
-                    label={"Номер картки"}
-                    rules={[{
-                        required: true,
-                        message: "Введіть номер картки!"
-                    }]}
-                    name={"card_number"}
+                    label={"Введіть дані банківської картки"}
+                    name={"private_card_info"}
                 >
-{/*//TODO*/}
-                    {/*<Input*/}
-                    {/*    bordered*/}
-                    {/*    onChange={onNumberChange}*/}
-                    {/*    value={cardNumber}*/}
-                    {/*    size={"large"}*/}
-                    {/*    placeholder={"0000 0000 0000 0000"}*/}
-                    {/*/>*/}
+                    <PaymentInputsWrapper {...wrapperProps}>
+                        <svg {...getCardImageProps({images})} />
+                        <input {...getCardNumberProps({
+                            onChange: onNumberChange,
+                            value: cardNumber
+                        })} />
+                        <div></div>
+                        <input onChange={onDateChange} {...getExpiryDateProps({
+                            onChange: onDateChange,
+                            value: expiredDate
+                        })} />
+                        <input onChange={onCVVChange} {...getCVCProps({
+                            onChange: onCVVChange,
+                            value: cvv
+                        })} />
+                    </PaymentInputsWrapper>
                 </Form.Item>
-
-                {/*<div style={{display: "grid", gridTemplateColumns: "repeat(2, 50%)"}}>*/}
-                {/*    <Form.Item*/}
-                {/*        label={"Date Expired"}*/}
-                {/*        rules={[{*/}
-                {/*            required: true,*/}
-                {/*            message: "Введіть час спливу роботи картки!"*/}
-                {/*        }]}*/}
-                {/*        name={"expired_date"}*/}
-                {/*    >*/}
-                {/*        <Input*/}
-                {/*            bordered*/}
-                {/*            onChange={onDateChange}*/}
-                {/*            value={expiredDate}*/}
-                {/*            placeholder={"00/0000"}*/}
-                {/*            style={{maxWidth: "30%"}}*/}
-                {/*        />*/}
-                {/*    </Form.Item>*/}
-
-                {/*    <Form.Item*/}
-                {/*        label={"CVV"}*/}
-                {/*        rules={[{*/}
-                {/*            required: true,*/}
-                {/*            message: "Введіть cvv код!"*/}
-                {/*        }]}*/}
-                {/*        name={"cvv"}*/}
-                {/*    >*/}
-                {/*        <Input*/}
-                {/*            bordered*/}
-                {/*            onChange={onCVVChange}*/}
-                {/*            value={cvv}*/}
-                {/*            placeholder={"***"}*/}
-                {/*            style={{maxWidth: "30%"}}*/}
-                {/*        />*/}
-                {/*    </Form.Item>*/}
-                {/*</div>*/}
 
                 <Form.Item
                     label={"Оберіть банк"}
@@ -131,8 +116,11 @@ const PaymentsAdmin = () => {
                     name={"card_owner"}
                 >
                     <Input
-                        onChange={onOwnerChange}
+                        onChange={(e) => {
+                            onOwnerChange(e);
+                        }}
                         value={cardOwner}
+
                         bordered
                     />
                 </Form.Item>
@@ -156,16 +144,20 @@ const PaymentsAdmin = () => {
                     label={"Коротка інформація (Optional)"}
                     name={"short_info"}
                 >
-                    <InputNumber
+                    <TextArea
                         value={cardInfo}
                         onChange={onInfoChange}
                         bordered
+                        showCount
+                        maxLength={100}
+                        style={{maxWidth: "50%"}}
                     />
                 </Form.Item>
 
                 <Button htmlType={"submit"}
                         style={{marginTop: "10px"}}
                         type={"primary"}
+                        disabled={wrapperProps.error !== undefined}
                 >
                     Зберегти
                 </Button>
