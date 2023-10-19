@@ -10,7 +10,8 @@ export const PATH = {
         ROOT: "/clients",
         INFO: "/clients/info/:id",
         info: id => `/clients/info/${id}`,
-        ADMIN: "/clients/create"
+        ADMIN: "/clients/create",
+        PASSPORT: "/clients/passport"
     },
     PAYMENTS: {
         ROOT: "/payments",

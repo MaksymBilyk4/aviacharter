@@ -3,7 +3,7 @@ import {PATH} from "../../routes/PATH";
 import {
     ContactsOutlined,
     CreditCardOutlined,
-    HomeOutlined,
+    HomeOutlined, ReadOutlined,
     ShoppingOutlined, SisternodeOutlined, SolutionOutlined,
     TeamOutlined,
     UserAddOutlined
@@ -14,7 +14,8 @@ export const menuItems = [
     getItem(<Link to={PATH.HOME}>Головна</Link>, PATH.HOME, <HomeOutlined/>),
     getItem("Клієнти", "CLIENTS", <ContactsOutlined/>, [
         getItem(<Link to={PATH.CLIENTS.ROOT}>Всі клієнти</Link>, PATH.CLIENTS.ROOT, <TeamOutlined/>),
-        getItem(<Link to={PATH.CLIENTS.ADMIN}>Додати клієнта</Link>, PATH.CLIENTS.ADMIN, <UserAddOutlined/>)
+        getItem(<Link to={PATH.CLIENTS.ADMIN}>Додати клієнта</Link>, PATH.CLIENTS.ADMIN, <UserAddOutlined/>),
+        getItem(<Link to={PATH.CLIENTS.PASSPORT}>Додати паспорт</Link>, PATH.CLIENTS.PASSPORT, <ReadOutlined />)
     ]),
     getItem("Замовлення", "ORDERS", <ShoppingOutlined/>, [
         getItem(<Link to={PATH.ORDERS.ROOT}>Всі замовлення</Link>, PATH.ORDERS.ROOT, <SolutionOutlined/>),

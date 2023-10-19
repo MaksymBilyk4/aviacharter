@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {paymentSelector} from "../../redux/selector/paymentSelector";
 import {Button, Card, Modal} from "antd";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
-import {deletePaymentById} from "../../redux/action/payment";
+import {deletePaymentByIdAction} from "../../redux/action/payment";
 import PaymentsAdmin from "./PaymentsAdmin";
 
 const Payments = () => {
@@ -41,7 +41,7 @@ const Payments = () => {
                                 actions={[
                                     <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                                         <Button danger type={"primary"}
-                                                onClick={() => dispatch(deletePaymentById(item.id))}
+                                                onClick={() => dispatch(deletePaymentByIdAction(item.id))}
                                                 style={{width: "90%"}}
                                                 icon={<DeleteOutlined
                                                     style={{color: "white", fontWeight: "bold", fontSize: "22px"}}/>}

@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Button, Form, Input, InputNumber, Select, message} from "antd";
 import {banks} from "./BanksConstants";
 import {useDispatch} from "react-redux";
-import {createPayment, updatePayment} from "../../redux/action/payment";
+import {createPaymentAction} from "../../redux/action/payment";
 import {PaymentInputsWrapper, usePaymentInputs} from "react-payment-inputs";
 import images from "react-payment-inputs/images";
 
@@ -41,7 +41,7 @@ const PaymentsAdmin = () => {
 
 
     const onFinish = async () => {
-        dispatch(createPayment({
+        dispatch(createPaymentAction({
             cardNumber,
             cardOwner,
             bankName: bank,

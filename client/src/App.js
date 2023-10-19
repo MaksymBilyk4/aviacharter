@@ -3,14 +3,16 @@ import {Route, Routes} from "react-router-dom";
 import {routes} from "./routes/routes";
 import MainLayout from "./components/Layout/MainLayout";
 import {useDispatch} from "react-redux";
-import {findAllPayments} from "./redux/action/payment";
+import {findAllPaymentsAction} from "./redux/action/payment";
+import {findAllClientsAction} from "./redux/action/client";
 
 const App = () => {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(findAllPayments());
+        dispatch(findAllPaymentsAction());
+        dispatch(findAllClientsAction());
     }, []);
 
     return (
