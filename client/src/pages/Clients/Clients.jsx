@@ -44,7 +44,7 @@ const Clients = () => {
                         ]}
                     >
                         <p style={{fontSize: "16px", fontWeight: 400}}>Telephone number: {item?.telephoneNumber}</p>
-                        <p style={{fontSize: "16px", fontWeight: 400}}>Birthday: {item?.birthday}</p>
+                        <p style={{fontSize: "16px", fontWeight: 400}}>Birthday: {item?.birthday || "Інформація відсутня"}</p>
                     </Card>
                 )}
             </div>

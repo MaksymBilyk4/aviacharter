@@ -58,7 +58,6 @@ public class Passport extends BaseEntity {
                 ", startDate=" + startDate +
                 ", expiredDate=" + expiredDate +
                 ", additionalData='" + additionalData + '\'' +
-                ", client=" + client.getId() +
                 '}';
     }
 }

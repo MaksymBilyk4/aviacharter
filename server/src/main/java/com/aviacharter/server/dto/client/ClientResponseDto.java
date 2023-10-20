@@ -19,7 +19,6 @@ public class ClientResponseDto {
     private String additionalInfo;
 
     private Long passportId;
-    private String passportNumber;
 
     @Override
     public String toString() {
@@ -31,7 +30,6 @@ public class ClientResponseDto {
                 ", birthday='" + birthday + '\'' +
                 ", additionalInfo='" + additionalInfo + '\'' +
                 ", passportId=" + passportId +
-                ", passportNumber='" + passportNumber + '\'' +
                 '}';
     }
 }

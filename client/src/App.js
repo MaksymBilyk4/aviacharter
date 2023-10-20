@@ -5,6 +5,7 @@ import MainLayout from "./components/Layout/MainLayout";
 import {useDispatch} from "react-redux";
 import {findAllPaymentsAction} from "./redux/action/payment";
 import {findAllClientsAction} from "./redux/action/client";
+import {findAllPassportsAction} from "./redux/action/passport";
 
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
     useEffect(() => {
         dispatch(findAllPaymentsAction());
         dispatch(findAllClientsAction());
+        dispatch(findAllPassportsAction());
     }, []);
 
     return (

@@ -5,6 +5,7 @@ import com.aviacharter.server.dto.passport.PassportResponseDto;
 import com.aviacharter.server.entity.passport.Passport;
 import com.aviacharter.server.facade.passport.PassportRequestMapper;
 import com.aviacharter.server.facade.passport.PassportResponseMapper;
+import com.aviacharter.server.service.ClientService;
 import com.aviacharter.server.service.PassportService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin("*")
 @RestController
 @AllArgsConstructor
 @RequestMapping("${api.version}/passports")
@@ -20,6 +22,7 @@ public class PassportController {
     private final PassportService passportService;
     private final PassportResponseMapper responseMapper;
     private final PassportRequestMapper requestMapper;
+    private final ClientService clientService;
 
     @GetMapping("/all")
     public List<PassportResponseDto> findAll() {

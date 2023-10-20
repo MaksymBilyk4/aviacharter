@@ -8,7 +8,7 @@ import ClientInfo from "../pages/Clients/ClientInfo";
 import ClientsAdmin from "../pages/Clients/ClientsAdmin";
 import Payments from "../pages/Payments/Payments";
 import PaymentsAdmin from "../pages/Payments/PaymentsAdmin";
-import PasswordAdmin from "../pages/Clients/PasswordAdmin";
+import PassportAdmin from "../pages/Clients/PassportAdmin";
 
 export const routes = [
     {
@@ -48,7 +48,7 @@ export const routes = [
         path: PATH.PAYMENTS.ADMIN
     },
     {
-        element: <PasswordAdmin/>,
+        element: <PassportAdmin/>,
         path: PATH.CLIENTS.PASSPORT,
     }
 ]

@@ -19,6 +19,7 @@ public class PassportRequestDto {
     private String startDate;
     private String expiredDate;
     private String additionalData;
+    private Long clientId;
 
     @Override
     public String toString() {
@@ -31,6 +32,7 @@ public class PassportRequestDto {
                 ", startDate='" + startDate + '\'' +
                 ", expiredDate='" + expiredDate + '\'' +
                 ", additionalData='" + additionalData + '\'' +
+                ", clientId='" + clientId + '\'' +
                 '}';
     }
 }

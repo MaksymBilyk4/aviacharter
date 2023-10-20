@@ -18,5 +18,6 @@ public class ClientResponseMapper extends GeneralFacade<Client, ClientResponseDt
         DateParser dateParser = new DateParser();
 
         dto.setBirthday(dateParser.parseLocalDateToString(entity.getBirthday()));
+        if (entity.getPassport() != null) dto.setPassportId(entity.getPassport().getId());
     }
 }

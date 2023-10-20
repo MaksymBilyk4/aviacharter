@@ -1,5 +1,6 @@
-export const PAYMENT_BASE_URL = "/payments"
-export const CLIENT_BASE_URL = "/clients"
+export const PAYMENT_BASE_URL = "/payments";
+export const CLIENT_BASE_URL = "/clients";
+export const PASSPORT_BASE_URL = "/passports"
 export const API_URLS = {
     MAPPING: {
         findAll: (entity) => `${entity}/all`,

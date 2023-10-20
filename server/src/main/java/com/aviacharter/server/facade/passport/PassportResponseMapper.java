@@ -20,5 +20,7 @@ public class PassportResponseMapper extends GeneralFacade<Passport, PassportResp
         dto.setBirthDate(dateParser.parseLocalDateToString(entity.getBirthDate()));
         dto.setStartDate(dateParser.parseLocalDateToString(entity.getStartDate()));
         dto.setExpiredDate(dateParser.parseLocalDateToString(entity.getExpiredDate()));
+        dto.setGender(String.valueOf(entity.getGender()));
+        if (entity.getClient() != null) dto.setClientId(entity.getClient().getId());
     }
 }

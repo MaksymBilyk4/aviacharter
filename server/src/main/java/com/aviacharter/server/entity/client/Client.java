@@ -34,7 +34,7 @@ public class Client extends BaseEntity {
     private String additionalInfo;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "passport_number", referencedColumnName = "passport_number")
+    @JoinColumn(name = "passport_id", referencedColumnName = "id")
     private Passport passport;
 
     @Override
@@ -45,7 +45,6 @@ public class Client extends BaseEntity {
                 ", email='" + email + '\'' +
                 ", birthday=" + birthday +
                 ", additionalInfo='" + additionalInfo + '\'' +
-                ", passport=" + passport.getPassportNumber() +
                 '}';
     }
 }
