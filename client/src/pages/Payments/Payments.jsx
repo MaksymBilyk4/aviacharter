@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {paymentSelector} from "../../redux/selector/paymentSelector";
-import {Button, Card, Modal} from "antd";
+import {Button, Card, Input, Modal} from "antd";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import {deletePaymentByIdAction} from "../../redux/action/payment";
 import PaymentsAdmin from "./PaymentsAdmin";
+import debounce from "lodash.debounce";
 
 const Payments = () => {
 
@@ -13,6 +14,12 @@ const Payments = () => {
 
     const [isOpen, setOpen] = useState(false);
     const [entity, setEntity] = useState({});
+    const [filtered, setFiltered] = useState([]);
+    const [query, setQuery] = useState("");
+
+    useEffect(() => {
+        setFiltered(payments);
+    }, [payments])
 
     const handleModalSubmit = () => {
         setOpen(false);
@@ -25,13 +32,35 @@ const Payments = () => {
 
     const showModal = () => setOpen(true);
 
+    const filterPaymentsChange = (e) => {
+        setFiltered(payments?.filter
+        (item =>
+            item?.cardNumber?.includes(e.target.value) ||
+            item?.cardOwner?.includes(e.target.value) ||
+            item?.bankName?.includes(e.target.value.toUpperCase()))
+        );
+        setQuery(e.target.value);
+    }
+
 
     return (
         <>
+
+            <Input
+                placeholder={"Шукай за: номером картки, власником, назвою банку (НА АНГЛІЙСЬКІЙ)"}
+                onChange={debounce(filterPaymentsChange, 500)}
+                size={"large"}
+                style={{marginBottom: "20px"}}
+            />
+
+            {payments?.length === 0&& <h1 style={{textAlign: "center", fontSize: "20px", marginTop: "20px"}}>На разі немає жодного способу оплати</h1>}
+
+            {filtered.length === 0 && payments?.length > 0 ? <h1 style={{fontSize: "20px"}}>Картки за даними {query} не знайдено</h1> : ""}
+
             {
-                payments.length > 0 ?
+                filtered?.length > 0 &&
                     <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gridGap: "20px"}}>
-                        {payments?.map(item =>
+                        {filtered?.map(item =>
                             <Card
                                 key={item?.id}
                                 title={
@@ -69,7 +98,7 @@ const Payments = () => {
                                 <p>Додаткова
                                     інформація: {item.cardInfo.length > 0 ? item.cardInfo : "Додаткова інформація відсутня"}</p>
                             </Card>)}
-                    </div> : <h1 style={{textAlign: "center", fontSize: "22px"}}>Немає жодної інформації</h1>
+                    </div>
             }
 
             <Modal

@@ -41,7 +41,7 @@ const ClientsAdmin = () => {
     }
 
     const onNameChange = e => setName(e.target.value);
-    const onTelephoneChange = e => setTelephone("+" + e.target.value);
+    const onTelephoneChange = e => setTelephone(e.target.value);
     const onEmailChange = e => setEmail(e.target.value);
     const onBirthdayChange = e => setBirthday(e?.$d || "");
     const onInfoChange = e => setInfo(e.target.value);
