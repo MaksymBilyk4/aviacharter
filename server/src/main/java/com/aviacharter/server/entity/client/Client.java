@@ -1,6 +1,7 @@
 package com.aviacharter.server.entity.client;
 
 import com.aviacharter.server.entity.BaseEntity;
+import com.aviacharter.server.entity.order.Order;
 import com.aviacharter.server.entity.passport.Passport;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -37,14 +39,19 @@ public class Client extends BaseEntity {
     @JoinColumn(name = "passport_id", referencedColumnName = "id")
     private Passport passport;
 
+    @OneToMany(mappedBy = "client")
+    private Set<Order> orders;
+
     @Override
     public String toString() {
         return "Client{" +
                 "clientName='" + clientName + '\'' +
-                ", telephone_number='" + telephoneNumber + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", birthday=" + birthday +
                 ", additionalInfo='" + additionalInfo + '\'' +
+                ", passport=" + passport +
+                ", orders=" + orders +
                 '}';
     }
 }
