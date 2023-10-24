@@ -1,23 +1,19 @@
 package com.aviacharter.server.dto.order;
 
-import com.aviacharter.server.dto.client.ClientResponseDto;
-import com.aviacharter.server.dto.operator.OperatorShortResponseDto;
-import com.aviacharter.server.dto.orderType.OrderTypeShortResponseDto;
+import com.aviacharter.server.dto.client.ClientNoOrderDataResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderResponseDto {
+public class OrderNoRelationResponseDto {
 
     private Long id;
-
+    private ClientNoOrderDataResponseDto client;
     private int bruttoPrice;
     private int nettoPrice;
     private int profit;
@@ -26,16 +22,10 @@ public class OrderResponseDto {
     private String orderNumber;
     private String comment;
 
-    // TODO: map this in mappers
-    private ClientResponseDto client;
-    private Set<OrderTypeShortResponseDto> orderTypes;
-    private OperatorShortResponseDto operator;
-
-
     @Override
     public String toString() {
-        return "OrderResponseDto{" +
-                "id=" + id +
+        return "OrderNoRelationResponseDto{" +
+                "client=" + client +
                 ", bruttoPrice=" + bruttoPrice +
                 ", nettoPrice=" + nettoPrice +
                 ", profit=" + profit +
@@ -43,9 +33,6 @@ public class OrderResponseDto {
                 ", departureDate='" + departureDate + '\'' +
                 ", orderNumber='" + orderNumber + '\'' +
                 ", comment='" + comment + '\'' +
-                ", client=" + client +
-                ", orderTypes=" + orderTypes +
-                ", operator=" + operator +
                 '}';
     }
 }

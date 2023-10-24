@@ -2,6 +2,8 @@ package com.aviacharter.server.entity.order;
 
 import com.aviacharter.server.entity.BaseEntity;
 import com.aviacharter.server.entity.client.Client;
+import com.aviacharter.server.entity.operator.Operator;
+import com.aviacharter.server.entity.orderType.OrderType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,14 +21,6 @@ import java.util.Set;
 @Entity
 @Table(name = "orders")
 public class Order extends BaseEntity {
-
-
-    @OneToMany(mappedBy = "order")
-    private Set<OrderType> orderTypes;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "operator_id", referencedColumnName = "id")
-    private Operator tourOperator;
 
     @Column(name = "brutto_price", nullable = false)
     private int bruttoPrice;
@@ -46,13 +40,28 @@ public class Order extends BaseEntity {
     @Column(name = "order_number")
     private String orderNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
-    private Client client;
-
-
     @Column(name = "comment")
     private String comment;
+
+
+    // ManyToMany
+    @ManyToMany
+    @JoinTable(
+            name = "orders_types",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "orderType_id")
+    )
+    private Set<OrderType> orderTypes;
+
+    // ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "operator_id")
+    private Operator tourOperator;
+
+    //ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     @Override
     public String toString() {

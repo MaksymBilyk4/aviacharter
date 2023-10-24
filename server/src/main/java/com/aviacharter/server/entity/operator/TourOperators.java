@@ -1,4 +1,4 @@
-package com.aviacharter.server.entity.order;
+package com.aviacharter.server.entity.operator;
 
 public enum TourOperators {
     JOIN_UP,

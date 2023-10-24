@@ -2,7 +2,7 @@ package com.aviacharter.server.controller;
 
 import com.aviacharter.server.dto.operator.OperatorRequestDto;
 import com.aviacharter.server.dto.operator.OperatorResponseDto;
-import com.aviacharter.server.entity.order.Operator;
+import com.aviacharter.server.entity.operator.Operator;
 import com.aviacharter.server.facade.operator.OperatorRequestDtoMapper;
 import com.aviacharter.server.facade.operator.OperatorResponseDtoMapper;
 import com.aviacharter.server.service.OperatorService;

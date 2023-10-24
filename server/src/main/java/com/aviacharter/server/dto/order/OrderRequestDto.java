@@ -11,14 +11,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrderRequestDto {
 
-    private String orderType;
+
     private String comment;
 
-    @Override
-    public String toString() {
-        return "OrderRequestDto{" +
-                "orderType='" + orderType + '\'' +
-                ", comment='" + comment + '\'' +
-                '}';
-    }
+    // TODO
+
 }

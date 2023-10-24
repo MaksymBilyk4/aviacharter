@@ -1,8 +1,8 @@
 package com.aviacharter.server.controller;
 
-import com.aviacharter.server.entity.order.OrderType;
-import com.aviacharter.server.entity.orderType.OrderTypeRequestDto;
-import com.aviacharter.server.entity.orderType.OrderTypeResponseDto;
+import com.aviacharter.server.entity.orderType.OrderType;
+import com.aviacharter.server.dto.orderType.OrderTypeRequestDto;
+import com.aviacharter.server.dto.orderType.OrderTypeResponseDto;
 import com.aviacharter.server.facade.orderType.OrderTypeRequestMapper;
 import com.aviacharter.server.facade.orderType.OrderTypeResponseMapper;
 import com.aviacharter.server.service.OrderTypeService;

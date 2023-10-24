@@ -1,6 +1,6 @@
 package com.aviacharter.server.service;
 
-import com.aviacharter.server.entity.order.Operator;
+import com.aviacharter.server.entity.operator.Operator;
 import com.aviacharter.server.repository.OperatorRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional

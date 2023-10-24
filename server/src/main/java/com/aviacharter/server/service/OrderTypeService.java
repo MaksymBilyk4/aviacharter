@@ -1,6 +1,6 @@
 package com.aviacharter.server.service;
 
-import com.aviacharter.server.entity.order.OrderType;
+import com.aviacharter.server.entity.orderType.OrderType;
 import com.aviacharter.server.repository.OrderTypeRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

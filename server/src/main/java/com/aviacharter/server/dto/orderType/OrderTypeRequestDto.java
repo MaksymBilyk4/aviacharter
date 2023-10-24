@@ -1,4 +1,4 @@
-package com.aviacharter.server.entity.orderType;
+package com.aviacharter.server.dto.orderType;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

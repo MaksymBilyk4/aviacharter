@@ -38,7 +38,13 @@ public class OrderService implements BaseService<Order> {
     public Order update(Order obj, Long id) {
         Order order = findById(id);
 
-        order.setOrderType(obj.getOrderType());
+//        order.setTourOperator(obj.getTourOperator());
+        order.setBruttoPrice(obj.getBruttoPrice());
+        order.setNettoPrice(obj.getNettoPrice());
+        order.setProfit(obj.getProfit());
+        order.setOrderDate(obj.getOrderDate());
+        order.setDepartureDate(obj.getDepartureDate());
+        order.setOrderNumber(obj.getOrderNumber());
         order.setComment(obj.getComment());
 
         return orderRepository.save(order);

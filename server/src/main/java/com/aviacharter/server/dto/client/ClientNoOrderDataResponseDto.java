@@ -1,18 +1,15 @@
 package com.aviacharter.server.dto.client;
 
-import com.aviacharter.server.dto.order.OrderNoRelationResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientResponseDto {
+public class ClientNoOrderDataResponseDto {
 
     private Long id;
     private String clientName;
@@ -21,19 +18,17 @@ public class ClientResponseDto {
     private String birthday;
     private String additionalInfo;
 
-    private Set<OrderNoRelationResponseDto> orders;
     private Long passportId;
 
     @Override
     public String toString() {
-        return "ClientResponseDto{" +
+        return "ClientNoOrderDataResponseDto{" +
                 "id=" + id +
                 ", clientName='" + clientName + '\'' +
                 ", telephoneNumber='" + telephoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", additionalInfo='" + additionalInfo + '\'' +
-                ", orders=" + orders +
                 ", passportId=" + passportId +
                 '}';
     }

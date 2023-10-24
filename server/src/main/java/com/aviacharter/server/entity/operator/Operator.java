@@ -1,12 +1,15 @@
-package com.aviacharter.server.entity.order;
+package com.aviacharter.server.entity.operator;
 
 
 import com.aviacharter.server.entity.BaseEntity;
+import com.aviacharter.server.entity.order.Order;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,17 +19,17 @@ import lombok.Setter;
 @Table(name = "operators")
 public class Operator extends BaseEntity {
 
-    @OneToOne(mappedBy = "operator")
-    private Order order;
-
     @Column(name = "operator_name")
     private String operatorName;
+
+    @OneToMany(mappedBy = "tourOperators")
+    private Set<Order> orders;
 
     @Override
     public String toString() {
         return "Operator{" +
-                "order=" + order.getId() +
-                ", operatorName='" + operatorName + '\'' +
+                "operatorName='" + operatorName + '\'' +
+                ", order=" + orders +
                 '}';
     }
 }
