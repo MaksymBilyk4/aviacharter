@@ -1,9 +1,6 @@
 package com.aviacharter.server.dto.operator;
 
 import com.aviacharter.server.dto.order.OrderNoRelationResponseDto;
-import com.aviacharter.server.entity.client.Client;
-import com.aviacharter.server.entity.order.Order;
-import com.aviacharter.server.entity.orderType.OrderType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

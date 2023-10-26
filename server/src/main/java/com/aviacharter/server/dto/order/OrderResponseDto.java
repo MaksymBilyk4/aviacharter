@@ -1,6 +1,6 @@
 package com.aviacharter.server.dto.order;
 
-import com.aviacharter.server.dto.client.ClientResponseDto;
+import com.aviacharter.server.dto.client.ClientNoOrderDataResponseDto;
 import com.aviacharter.server.dto.operator.OperatorShortResponseDto;
 import com.aviacharter.server.dto.orderType.OrderTypeShortResponseDto;
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ public class OrderResponseDto {
     private String comment;
 
     // TODO: map this in mappers
-    private ClientResponseDto client;
+    private ClientNoOrderDataResponseDto client;
     private Set<OrderTypeShortResponseDto> orderTypes;
     private OperatorShortResponseDto operator;
 

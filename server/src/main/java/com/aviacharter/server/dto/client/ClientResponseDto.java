@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -21,7 +22,7 @@ public class ClientResponseDto {
     private String birthday;
     private String additionalInfo;
 
-    private Set<OrderNoRelationResponseDto> orders;
+    private Set<OrderNoRelationResponseDto> orderData = new HashSet<>();
     private Long passportId;
 
     @Override
@@ -33,7 +34,7 @@ public class ClientResponseDto {
                 ", email='" + email + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", additionalInfo='" + additionalInfo + '\'' +
-                ", orders=" + orders +
+                ", orderData=" + orderData +
                 ", passportId=" + passportId +
                 '}';
     }

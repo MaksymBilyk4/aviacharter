@@ -22,7 +22,7 @@ public class Operator extends BaseEntity {
     @Column(name = "operator_name")
     private String operatorName;
 
-    @OneToMany(mappedBy = "tourOperators")
+    @OneToMany(mappedBy = "tourOperator")
     private Set<Order> orders;
 
     @Override

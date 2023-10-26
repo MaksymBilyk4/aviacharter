@@ -36,6 +36,14 @@ public class OrderTypeController {
         return responseMapper.convertToDto(orderTypeService.findById(id));
     }
 
+    @PutMapping("/{id}")
+    private OrderTypeResponseDto update(
+            @PathVariable Long id,
+            @RequestBody OrderTypeRequestDto dto
+    ) {
+        OrderType orderType = requestMapper.convertToEntity(dto);
+        return responseMapper.convertToDto(orderTypeService.update(orderType, id));
+    }
 
     @PostMapping
     private OrderTypeResponseDto create(

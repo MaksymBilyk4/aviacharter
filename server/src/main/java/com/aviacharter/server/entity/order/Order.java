@@ -60,7 +60,7 @@ public class Order extends BaseEntity {
 
     //ManyToOne
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
 
     @Override
