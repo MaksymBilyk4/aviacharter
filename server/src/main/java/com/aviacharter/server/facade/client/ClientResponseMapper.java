@@ -9,9 +9,6 @@ import com.aviacharter.server.facade.GeneralFacade;
 import com.aviacharter.server.utils.DateParser;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Service
 public class ClientResponseMapper extends GeneralFacade<Client, ClientResponseDto> {
     public ClientResponseMapper() {

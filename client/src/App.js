@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import {findAllPaymentsAction} from "./redux/action/payment";
 import {findAllClientsAction} from "./redux/action/client";
 import {findAllPassportsAction} from "./redux/action/passport";
+import {findAllOrderTypesAction, findAllTourOperatorsAction} from "./redux/action/order";
 
 const App = () => {
 
@@ -15,6 +16,8 @@ const App = () => {
         dispatch(findAllPaymentsAction());
         dispatch(findAllClientsAction());
         dispatch(findAllPassportsAction());
+        dispatch(findAllOrderTypesAction());
+        dispatch(findAllTourOperatorsAction());
     }, []);
 
     return (
