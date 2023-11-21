@@ -12,13 +12,12 @@ const OrderTypesInfo = () => {
             .then(res => setOrderType(res?.data));
     }, []);
 
-    console.log(orderType)
+    // TODO ........
 
     return (
         <div>
             <p>Id: {orderType?.id}</p>
             <p>Order Type: {orderType?.orderType}</p>
-            {/*TODO orders statistic with this order type, etc*/}
             orders statistic soon
         </div>
     );

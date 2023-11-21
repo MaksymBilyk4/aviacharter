@@ -13,7 +13,7 @@ const Operators = () => {
             <Table
                 bordered
                 dataSource={tourOperators}
-                columns={tourOperatorsDataColumn}
+                columns={tourOperatorsDataColumn()}
                 pagination={false}
                 style={{width: "100%"}}
             />

@@ -1,24 +1,35 @@
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {Button} from "antd";
+import {deleteTourOperatorByIdAction} from "../../redux/action/order";
 import {PATH} from "../../routes/PATH";
 
-export const tourOperatorsDataColumn = [
-    {
-        title: "Id",
-        dataIndex: "id",
-        key: "id",
-        render: (id) => <Link to={PATH.TOUR_OPERATORS.info(id)} style={{
-            fontWeight: "bold",
-            fontSize: "14px",
-            color: "black",
-            textDecoration: "underline"
-        }}>{id} (натисніть для детальнішої інформації)</Link>,
-        width: "20%"
-    },
-    {
-        title: "Tour Operator Name",
-        dataIndex: "operatorName",
-        key: "operatorName",
-        render: (operatorName) => <p style={{fontWeight: "bold"}}>{operatorName}</p>,
-        width: "80%"
-    }
-]
+export const tourOperatorsDataColumn = (deleteAccess = true) => {
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const navigate = useNavigate();
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const dispatch = useDispatch();
+
+    return [
+        {
+            title: "Id",
+            dataIndex: "id",
+            key: "id",
+        },
+        {
+            title: "Тур Оператор",
+            dataIndex: "operatorName",
+            key: "operatorName",
+        },
+        {
+            title: "Дії",
+            dataIndex: "id",
+            key: "actions",
+            render: (id) => (<div style={{display: "flex", justifyContent: "space-around"}}>
+                {deleteAccess && <Button danger onClick={() => dispatch(deleteTourOperatorByIdAction(id))}>Видалити</Button>}
+                <Button onClick={() => navigate(PATH.TOUR_OPERATORS.info(id))}>Check full info</Button>
+            </div>)
+        }
+    ];
+}

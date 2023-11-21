@@ -13,7 +13,7 @@ const OrderTypes = () => {
             <Table
                 bordered
                 dataSource={orderTypes}
-                columns={orderTypesDataColumn}
+                columns={orderTypesDataColumn()}
                 pagination={false}
                 style={{width: "100%"}}
             />

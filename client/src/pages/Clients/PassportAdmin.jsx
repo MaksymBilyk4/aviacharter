@@ -22,7 +22,6 @@ const PassportAdmin = () => {
     const [additionalData, setAdditionalData] = useState("");
     const [clientId, setClientId] = useState(0);
     const [messageApi, contextHolder] = message.useMessage();
-    console.log(startDate, expiredDate, birthday);
     const handleFirstNameChange = e => setFirstName(e.target.value);
     const handleLastNameChange = e => setLastName(e.target.value);
     const handleBirthdayChange = e => setBirthday(e?.$d || "");

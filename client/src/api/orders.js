@@ -10,7 +10,7 @@ export const findOrderById = async id => {
 }
 
 export const createOrder = async data => {
-    return await $api.post(API_URLS.MAPPING.create(ORDERS_BASE_URL, data));
+    return await $api.post(API_URLS.MAPPING.create(ORDERS_BASE_URL), data);
 }
 
 export const deleteOrderById = async id => {
