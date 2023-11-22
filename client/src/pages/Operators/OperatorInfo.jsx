@@ -2,8 +2,8 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {tourOperatorsSelector} from "../../redux/selector/orderSelector";
-import {Table} from "antd";
-import {operatorInfoOrderDataColumn} from "../../utils/tables/operatorInfoOrderDataColumn";
+import {Divider, Table} from "antd";
+import {generalInfoOrderDataColumn} from "../../utils/tables/generalInfoOrderDataColumn";
 
 const OperatorInfo = () => {
 
@@ -13,17 +13,20 @@ const OperatorInfo = () => {
 
     return (
         <div>
-            <h1>operator id: {operator?.id}</h1>
-            <h1>operator name: {operator?.operatorName}</h1>
+            <h1>Тур оператор - {operator?.operatorName}</h1>
 
-            <h1>Всі замовлення пов'язані з цим оператором: </h1>
+            <Divider style={{border: "2px solid red", margin: "30px 0"}}/>
+
+            <p style={{fontSize: "20px"}}>Всі замовлення пов'язані з оператором: <b>{operator?.operatorName}</b></p>
+
             <Table
                 bordered
                 style={{width: "100%"}}
                 pagination={false}
-                columns={operatorInfoOrderDataColumn()}
+                columns={generalInfoOrderDataColumn()}
                 dataSource={operator?.orders}
             />
+
         </div>
     );
 };

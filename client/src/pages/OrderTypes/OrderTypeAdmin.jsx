@@ -31,6 +31,8 @@ const OrderTypeAdmin = () => {
 
     return (
         <>
+            <h1 style={{textAlign: "center", fontSize: "18px", margin: "5px 0 20px 0"}}>Додати тип змовлення</h1>
+
             {contextHolder}
             <Form
                 ref={form}
@@ -45,7 +47,6 @@ const OrderTypeAdmin = () => {
                     name={"orderType"}
                 >
                     <Input
-                        size={"large"}
                         bordered
                         value={orderType}
                         placeholder={"ТУР"}
@@ -53,7 +54,7 @@ const OrderTypeAdmin = () => {
                     />
                 </Form.Item>
 
-                <Button htmlType="submit" type="primary">Зберегти</Button>
+                <Button htmlType="submit" ghost type="primary">Додати</Button>
             </Form>
         </>
     );

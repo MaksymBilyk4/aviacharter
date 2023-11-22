@@ -28,6 +28,7 @@ const OrderInfo = () => {
             <p>Order number: {order?.orderNumber}</p>
             <p>Comment: {order?.comment}</p>
             <p>Brutto: {order?.bruttoPrice}, Netto: {order?.nettoPrice}, Profit: {order?.profit}</p>
+            <h1>Client: <Link to={PATH.CLIENTS.info(order?.client?.id)}>{order?.client?.clientName}</Link></h1>
 
             <h1>Tour Operator</h1>
             <Table
@@ -38,7 +39,6 @@ const OrderInfo = () => {
                 pagination={false}
             />
 
-            <h1>Client: <Link to={PATH.CLIENTS.info(order?.client?.id)}>{order?.client?.clientName}</Link></h1>
 
 
             <h1>Order Types</h1>

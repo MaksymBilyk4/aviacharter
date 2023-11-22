@@ -1,43 +1,31 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {paymentSelector} from "../../redux/selector/paymentSelector";
-import {Button, Card, Input, Modal} from "antd";
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
+import {Button, Card, Input, Table} from "antd";
+import {DeleteOutlined} from "@ant-design/icons";
 import {deletePaymentByIdAction} from "../../redux/action/payment";
-import PaymentsAdmin from "./PaymentsAdmin";
 import debounce from "lodash.debounce";
+import {paymentDataColumn} from "../../utils/tables/paymentDataColumn";
 
 const Payments = () => {
 
     const payments = useSelector(paymentSelector);
     const dispatch = useDispatch();
 
-    const [isOpen, setOpen] = useState(false);
-    const [entity, setEntity] = useState({});
-    const [filtered, setFiltered] = useState([]);
+    const [filtered, setFiltered] = useState(useSelector(paymentSelector));
     const [query, setQuery] = useState("");
+    const [tableView, setTableView] = useState(true);
+    const handleTableViewOn = () => setTableView(true);
+    const handleTableViewOff = () => setTableView(false);
 
-    useEffect(() => {
-        setFiltered(payments);
-    }, [payments])
-
-    const handleModalSubmit = () => {
-        setOpen(false);
-    }
-
-    const handleModalCancel = () => {
-        setOpen(false);
-        setEntity({});
-    }
-
-    const showModal = () => setOpen(true);
+    useEffect(() => setFiltered(payments), [payments])
 
     const filterPaymentsChange = (e) => {
         setFiltered(payments?.filter
         (item =>
             item?.cardNumber?.includes(e.target.value) ||
-            item?.cardOwner?.includes(e.target.value) ||
-            item?.bankName?.includes(e.target.value.toUpperCase()))
+            item?.cardOwner?.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            item?.bankName?.toLowerCase().includes(e.target.value.toLowerCase()))
         );
         setQuery(e.target.value);
     }
@@ -45,18 +33,31 @@ const Payments = () => {
 
     return (
         <>
+            <h1 style={{textAlign: "center", fontSize: "22px", margin: "5px 0 20px 0"}}>Банківські картки</h1>
 
+            <div style={{margin: "5px 0 25px 0"}}>
+                <Button style={{margin: "0 10px 0 0"}} onClick={handleTableViewOn} type={tableView ? "primary" : "default"}>Табличний вид</Button>
+                <Button onClick={handleTableViewOff} type={tableView ? "default" : "primary"}>Карточний вид</Button>
+            </div>
+
+            <h1>Пошук</h1>
             <Input
                 placeholder={"Шукай за: номером картки, власником, назвою банку (НА АНГЛІЙСЬКІЙ)"}
                 onChange={debounce(filterPaymentsChange, 500)}
-                size={"large"}
                 style={{marginBottom: "20px"}}
             />
 
-            {payments?.length === 0&& <h1 style={{textAlign: "center", fontSize: "20px", marginTop: "20px"}}>На разі немає жодного способу оплати</h1>}
+            <h1>{filtered.length === 0 && `Картки за запитом ${query} не знайдено`}</h1>
 
-            {filtered.length === 0 && payments?.length > 0 ? <h1 style={{fontSize: "20px"}}>Картки за даними {query} не знайдено</h1> : ""}
+            <Table
+                bordered
+                pagination={false}
+                style={{width: "100%", display: tableView ? "block" : "none"}}
+                columns={paymentDataColumn()}
+                dataSource={filtered || payments}
+            />
 
+            <div style={{display: tableView ? "none" : "block"}}>
             {
                 filtered?.length > 0 &&
                     <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gridGap: "20px"}}>
@@ -75,16 +76,6 @@ const Payments = () => {
                                                 icon={<DeleteOutlined
                                                     style={{color: "white", fontWeight: "bold", fontSize: "22px"}}/>}
                                         />
-
-                                        <Button type={"primary"}
-                                                onClick={() => {
-                                                    setEntity(item);
-                                                    showModal();
-                                                }}
-                                                style={{width: "90%", marginTop: "10px"}}
-                                                icon={<EditOutlined
-                                                    style={{color: "white", fontWeight: "bold", fontSize: "22px"}}/>}
-                                        />
                                     </div>
                                 ]}
                             >
@@ -100,20 +91,7 @@ const Payments = () => {
                             </Card>)}
                     </div>
             }
-
-            <Modal
-                title={`Зміна картки - ${entity.cardNumber}`}
-                open={isOpen}
-                cancelButtonProps={{type: "primary", danger: true}}
-                okButtonProps={{style: {display: "none"}}}
-                onOk={handleModalSubmit}
-                onCancel={handleModalCancel}
-                width={"70%"}
-            >
-                <div style={{padding: "25px 0 0 0"}}>
-                    <PaymentsAdmin inputsData={entity} isRefactoredInputs={true}/>
-                </div>
-            </Modal>
+            </div>
         </>
 
     );

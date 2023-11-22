@@ -62,6 +62,7 @@ const PaymentsAdmin = () => {
 
     return (
         <>
+            <h1 style={{textAlign: "center", fontSize: "20px", margin: "0 0 25px 0"}}>Додати банківську картку</h1>
             {contextHolder}
             <Form
                 ref={form}
@@ -157,9 +158,10 @@ const PaymentsAdmin = () => {
                 <Button htmlType={"submit"}
                         style={{marginTop: "10px"}}
                         type={"primary"}
+                        ghost
                         disabled={wrapperProps.error !== undefined}
                 >
-                    Зберегти
+                    Додати
                 </Button>
             </Form>
         </>

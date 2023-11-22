@@ -25,6 +25,9 @@ public class OrderResponseMapper extends GeneralFacade<Order, OrderResponseDto> 
 
         DateParser dateParser = new DateParser();
 
+        dto.setOrderDate(dateParser.parseLocalDateToString(entity.getOrderDate()));
+        dto.setDepartureDate(dateParser.parseLocalDateToString(entity.getDepartureDate()));
+
         if (entity.getClient() != null) {
             ClientNoOrderDataResponseDto client = new ClientNoOrderDataResponseDto(
                     entity.getClient().getId(),

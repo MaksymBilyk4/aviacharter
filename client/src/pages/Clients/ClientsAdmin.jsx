@@ -48,6 +48,8 @@ const ClientsAdmin = () => {
 
     return (
         <>
+            <h1 style={{textAlign: "center", fontSize: "24x", margin: "0 0 20px 0"}}>Додати клієнта</h1>
+
             {contextHolder}
             <Form
                 ref={form}
@@ -119,7 +121,7 @@ const ClientsAdmin = () => {
                     />
                 </Form.Item>
 
-                <Button htmlType={'submit'} type={"primary"}>Зберегти</Button>
+                <Button htmlType={'submit'} type={"primary"}>Додати</Button>
             </Form>
         </>
     );

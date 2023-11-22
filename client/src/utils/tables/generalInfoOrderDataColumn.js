@@ -2,7 +2,7 @@ import {Button} from "antd";
 import {useNavigate} from "react-router-dom";
 import {PATH} from "../../routes/PATH";
 
-export const operatorInfoOrderDataColumn = () => {
+export const generalInfoOrderDataColumn = () => {
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const navigate = useNavigate();
@@ -32,7 +32,7 @@ export const operatorInfoOrderDataColumn = () => {
             title: "Повна інформація",
             dataIndex: "id",
             key: "full_info",
-            render: (id) => <Button onClick={() => navigate(PATH.ORDERS.info(id))}>Check full info</Button>
+            render: (id) => <Button type={"primary"} ghost onClick={() => navigate(PATH.ORDERS.info(id))}>Check full info</Button>
         }
     ]
 }

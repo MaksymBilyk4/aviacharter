@@ -31,6 +31,7 @@ const OperatorAdmin = () => {
 
     return (
         <>
+            <h1 style={{textAlign: "center", margin: "5px 0 20px 0", fontSize: "20px"}}>Додати тур оператора</h1>
             {contextHolder}
             <Form
                 ref={form}
@@ -48,13 +49,12 @@ const OperatorAdmin = () => {
                         value={operatorName}
                         onChange={handleOperatorNameChange}
                         bordered
-                        size={"large"}
                         style={{width: "100%"}}
                         placeholder={"Anex Tour"}
                     />
                 </Form.Item>
 
-                <Button htmlType="submit">Створити</Button>
+                <Button type={"primary"} ghost htmlType="submit">Додати</Button>
             </Form>
         </>
     );

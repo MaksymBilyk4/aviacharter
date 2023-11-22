@@ -21,15 +21,15 @@ export const orderTypesDataColumn = (deleteAccess = true) => {
             title: "Тип замовлення",
             dataIndex: "orderType",
             key: "orderType",
-            render: (orderType) => <p style={{fontSize: "16px", fontWeight: "bold"}}>{orderType}</p>,
+            render: (orderType) => <p>{orderType}</p>,
         },
         {
             title: "Дії",
             dataIndex: "id",
             key: "actions",
             render: (id) => (
-                <div style={{display: "flex", justifyContent: "space-around"}}>
-                    <Button onClick={() => navigate(PATH.ORDER_TYPES.info(id))}>Check full info</Button>
+                <div style={{display: "flex", justifyContent: "space-between"}}>
+                    <Button type={"primary"} ghost onClick={() => navigate(PATH.ORDER_TYPES.info(id))}>Check full info</Button>
                     {deleteAccess && <Button onClick={() => dispatch(deleteOrderTypeByIdAction(id))} danger>Delete</Button>}
                 </div>
             )

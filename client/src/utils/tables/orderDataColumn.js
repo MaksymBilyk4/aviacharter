@@ -59,11 +59,9 @@ export const orderDataColumn = () => {
             title: "Дії",
             dataIndex: "id",
             render: (id) => (
-                <div style={{display: "flex", justifyContent: "space-around", maxWidth: "100%"}}>
+                <div style={{display: "flex", maxWidth: "100%"}}>
+                    <Button style={{margin: "0 10px 0 0"}} type={"primary"} ghost onClick={() => navigate(PATH.ORDERS.info(id))}>Check Full info</Button>
                     <Button danger onClick={() => handleDelete(id)}>Видалити</Button>
-
-                    <Button onClick={() => navigate(PATH.ORDERS.info(id))}>Check Full info</Button>
-
                 </div>
             )
         }

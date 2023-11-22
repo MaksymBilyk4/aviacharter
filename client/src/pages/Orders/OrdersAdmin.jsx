@@ -73,6 +73,8 @@ const OrdersAdmin = () => {
 
     return (
         <>
+            <h1 style={{textAlign: "center", margin: "5px 0 20px 0", fontSize: "20px"}}>Створити замовлення</h1>
+
             {contextHolder}
             <Form
                 onFinish={handleOnFinish}

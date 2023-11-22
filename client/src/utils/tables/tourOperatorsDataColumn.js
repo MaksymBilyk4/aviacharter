@@ -26,9 +26,9 @@ export const tourOperatorsDataColumn = (deleteAccess = true) => {
             title: "Дії",
             dataIndex: "id",
             key: "actions",
-            render: (id) => (<div style={{display: "flex", justifyContent: "space-around"}}>
+            render: (id) => (<div style={{display: "flex", justifyContent: "space-between"}}>
+                <Button type={"primary"} ghost onClick={() => navigate(PATH.TOUR_OPERATORS.info(id))}>Check full info</Button>
                 {deleteAccess && <Button danger onClick={() => dispatch(deleteTourOperatorByIdAction(id))}>Видалити</Button>}
-                <Button onClick={() => navigate(PATH.TOUR_OPERATORS.info(id))}>Check full info</Button>
             </div>)
         }
     ];
