@@ -29,6 +29,28 @@ public class NoteController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/expired")
+    public List<NoteResponseDto> findAllExpiredNotes() {
+        return noteService.findAllExpiredNotes().stream()
+                .map(responseMapper::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+
+    @GetMapping("/completed")
+    public List<NoteResponseDto> findAllCompleted() {
+        return noteService.findAllCompletedNotes().stream()
+                .map(responseMapper::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/notCompletedAndNotExpired")
+    public List<NoteResponseDto> findNotCompletedAndNotExpiredNotes() {
+        return noteService.findNotCompletedAndNotExpiredNotes().stream()
+                .map(responseMapper::convertToDto)
+                .collect(Collectors.toList());
+    }
+
     @GetMapping("/{id}")
     public NoteResponseDto findById (
             @PathVariable Long id
@@ -42,6 +64,13 @@ public class NoteController {
     ) {
         Note note = requestMapper.convertToEntity(requestDto);
         return responseMapper.convertToDto(noteService.create(note));
+    }
+
+    @PutMapping("/complete")
+    public NoteResponseDto completeNote(
+            @RequestParam Long id
+    ) {
+        return responseMapper.convertToDto(noteService.completeNote(id));
     }
 
     @PutMapping("/{id}")

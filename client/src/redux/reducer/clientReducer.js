@@ -7,7 +7,6 @@ const initialObject = {
     currentUserInfoPageData: {}
 }
 
-// TODO -> add to client entity passportId while creating client
 
 export const clientReducer = (state = initialObject, action) => {
     switch (action.type) {

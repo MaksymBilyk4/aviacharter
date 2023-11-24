@@ -4,6 +4,7 @@ export const PASSPORT_BASE_URL = "/passports";
 export const ORDERS_BASE_URL = "/orders";
 export const ORDER_TYPES_BASE_URL = "/orderTypes";
 export const TOUR_OPERATORS_BASE_URL = "/operators";
+export const NOTES_BASE_URL = "/notes";
 export const API_URLS = {
     MAPPING: {
         findAll: (entity) => `${entity}/all`,
@@ -14,5 +15,11 @@ export const API_URLS = {
     },
     PAYMENTS: {
         updateBalance: () => `${PAYMENT_BASE_URL}/updateBalance`
+    },
+    NOTES: {
+        findAllExpiredNotes: () => `${NOTES_BASE_URL}/expired`,
+        findAllCompletedNotes: () => `${NOTES_BASE_URL}/completed`,
+        findNotCompletedAndNotExpiredNotes: () => `${NOTES_BASE_URL}/notCompletedAndNotExpired`,
+        completeNote: (id) => `${NOTES_BASE_URL}/complete?id=${id}`
     }
 }

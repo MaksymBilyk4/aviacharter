@@ -58,4 +58,22 @@ public class NoteService implements BaseService<Note> {
     public void deleteById(Long id) {
         noteRepository.deleteById(id);
     }
+
+    public List<Note> findAllExpiredNotes () {
+        return noteRepository.findExpiredNotes();
+    }
+
+    public List<Note> findAllCompletedNotes() {
+        return noteRepository.findCompletedNotes();
+    }
+
+    public Note completeNote(Long id) {
+        Note note = findById(id);
+        note.setCompleted(true);
+        return noteRepository.save(note);
+    }
+
+    public List<Note> findNotCompletedAndNotExpiredNotes() {
+        return noteRepository.findNotCompletedAndNotExpiredNotes();
+    }
 }
