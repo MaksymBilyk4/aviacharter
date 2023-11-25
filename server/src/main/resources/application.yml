@@ -54,31 +54,31 @@ spring:
     database: postgresql
     database-platform: ${DEV_JPA_DIALECT}
 
----
-
-spring:
-  config:
-    activate:
-      on-profile: test
-  datasource:
-    driver-class-name: ${TEST_DB_DRIVER_CLASS_NAME}
-    url: ${TEST_DB_URL}
-    username: ${TEST_DB_USER}
-    password:
-  sql:
-    init:
-      mode: always
-      data-locations: classpath:db/migration/V1_init.sql
-  jpa:
-    defer-datasource-initialization: true
-    generate-ddl: true
-    hibernate:
-      ddl-auto: create-drop
-    show-sql: true
-  h2:
-    console:
-      enabled: true
-      settings:
-        web-allow-others: true
-  main:
-    allow-circular-references: true
+#---
+#
+#spring:
+#  config:
+#    activate:
+#      on-profile: test
+#  datasource:
+#    driver-class-name: ${TEST_DB_DRIVER_CLASS_NAME}
+#    url: ${TEST_DB_URL}
+#    username: ${TEST_DB_USER}
+#    password:
+#  sql:
+#    init:
+#      mode: always
+#      data-locations: classpath:db/migration/V1_init.sql
+#  jpa:
+#    defer-datasource-initialization: true
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: true
+#  h2:
+#    console:
+#      enabled: true
+#      settings:
+#        web-allow-others: true
+#  main:
+#    allow-circular-references: true
