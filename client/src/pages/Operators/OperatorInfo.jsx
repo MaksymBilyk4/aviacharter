@@ -18,6 +18,7 @@ const OperatorInfo = () => {
             <Divider style={{border: "2px solid red", margin: "30px 0"}}/>
 
             <p style={{fontSize: "20px"}}>Всі замовлення пов'язані з оператором: <b>{operator?.operatorName}</b></p>
+            <h1 style={{color: "red"}}>Загальна кількість замолвень: {operator?.orders?.length}</h1>
 
             <Table
                 bordered

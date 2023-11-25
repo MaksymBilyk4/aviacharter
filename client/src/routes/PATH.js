@@ -29,4 +29,7 @@ export const PATH = {
         ROOT: "/payments",
         ADMIN: "/payments/create"
     },
+    NOTES: {
+        ROOT: "/notes"
+    }
 }

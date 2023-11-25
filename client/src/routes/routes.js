@@ -15,6 +15,7 @@ import Operators from "../pages/Operators/Operators";
 import OrderTypeAdmin from "../pages/OrderTypes/OrderTypeAdmin";
 import OrderTypesInfo from "../pages/OrderTypes/OrderTypesInfo";
 import OrderTypes from "../pages/OrderTypes/OrderTypes";
+import Notes from "../pages/Notes/Notes";
 
 export const routes = [
     {
@@ -80,5 +81,9 @@ export const routes = [
     {
         element: <Operators/>,
         path: PATH.TOUR_OPERATORS.ROOT
-    }
+    },
+    {
+        element: <Notes/>,
+        path: PATH.NOTES.ROOT
+    },
 ]

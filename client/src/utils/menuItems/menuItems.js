@@ -3,7 +3,7 @@ import {PATH} from "../../routes/PATH";
 import {
     BookOutlined,
     ContactsOutlined,
-    CreditCardOutlined, CustomerServiceOutlined,
+    CreditCardOutlined, CustomerServiceOutlined, FileTextOutlined,
     HomeOutlined, ReadOutlined,
     ShoppingOutlined, SisternodeOutlined, SolutionOutlined,
     TeamOutlined,
@@ -33,5 +33,8 @@ export const menuItems = [
     getItem("Платіжні дані", "PAYMENTS", <CreditCardOutlined/>, [
         getItem(<Link to={PATH.PAYMENTS.ROOT}>Платіжні дані</Link>, PATH.PAYMENTS.ROOT, <CreditCardOutlined/>),
         getItem(<Link to={PATH.PAYMENTS.ADMIN}>Додати картку</Link>, PATH.PAYMENTS.ADMIN, <CreditCardOutlined/>)
-    ])
+    ]),
+    // getItem("Примітки", "NOTES", <BookOutlined />, [
+    //    getItem(<Link to={PATH.NOTES.ROOT}>Всі примітки</Link>, PATH.NOTES.ROOT,<FileTextOutlined />)
+    // ])
 ]

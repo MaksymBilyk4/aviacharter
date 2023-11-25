@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {currentClientData, passportSelector} from "../../redux/selector/clientSelector";
 import {setCurrentClientInfoOptionalById} from "../../redux/action/client";
@@ -15,12 +15,16 @@ const ClientInfo = () => {
     const currentDateString = `${date.getDate()}.${date.getMonth() + 1}`;
     const dispatch = useDispatch();
     const {id} = useParams();
-
+    const [generalProfit, setGeneralProfit] = useState(0);
 
     if (Object.keys(clientData).length === 0) {
         dispatch(setCurrentClientInfoOptionalById(id));
     }
 
+    useEffect(() => {
+        const income = clientData?.orderData?.reduce((acc, val) => acc + val?.profit, 0);
+        setGeneralProfit(income);
+    }, [clientData?.orderData]);
 
     return (
         <>
@@ -75,6 +79,8 @@ const ClientInfo = () => {
 
             <Divider style={{border: "2px solid #f5222d"}}/>
 
+            <h1 style={{color: "#ff4d4f"}}>Загальна сума замовлень становить: {generalProfit}</h1>
+            <h1>Кількість замовлень: {clientData?.orderData?.length}</h1>
             <h1>Історія замовлень цього клієнта</h1>
 
             <Table
